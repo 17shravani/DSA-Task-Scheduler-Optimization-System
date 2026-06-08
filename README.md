@@ -1,4 +1,5 @@
 # 📅 Task Scheduler Optimization System
+<img width="1906" height="915" alt="p1 output" src="https://github.com/user-attachments/assets/00b8a378-2b70-4e23-996a-45112d4e03a3" />
 
 > **DSA Course Project** · Greedy + CP-SAT · FastAPI + Interactive Dashboard
 
