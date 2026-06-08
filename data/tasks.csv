@@ -1,0 +1,11 @@
+task_id,task_name,duration_h,deadline_h,priority,skill,profit,depends_on
+T1,Backend API Setup,4,24,3,backend,80,
+T2,Frontend UI Design,6,32,2,frontend,60,T1
+T3,QA Testing Phase 1,2,20,5,qa,90,T1
+T4,Database Schema,8,40,1,backend,50,
+T5,Authentication Module,3,36,4,backend,70,T4
+T6,Unit Test Suite,4,48,3,qa,65,T5
+T7,API Documentation,2,28,2,frontend,45,T2
+T8,Performance Tuning,5,52,4,backend,85,T5|T6
+T9,Security Audit,3,44,5,qa,95,T3|T6
+T10,Final Integration,6,60,3,frontend,75,T7|T8|T9

@@ -1,0 +1,40 @@
+882:      EDITORS TABLES & FORMS (NEW DYNAMIC CONFIGURATORS)
+883:    ═══════════════════════════════════════════════════════════ */
+884:   function renderEditorTables() {
+885:     // Tasks table render
+886:     const tBody = document.getElementById("editor-tasks-table");
+887:     tBody.innerHTML = tasks.map(t => {
+888:       const deps = t.depends_on.length > 0 ? t.depends_on.join(", ") : "—";
+889:       return `
+890:         <tr>
+891:           <td class="mono" style="color:var(--accent);">${t.task_id}</td>
+892:           <td>${t.task_name}</td>
+893:           <td class="mono">${t.duration_h}h</td>
+894:           <td class="mono">${t.deadline_h}h</td>
+895:           <td>${t.priority}</td>
+896:           <td><span class="badge badge-purple" style="padding:2px 8px; font-size:0.68rem;">${t.skill}</span></td>
+897:           <td style="color:var(--green); font-weight:700;">${getCurrency()}${t.profit}</td>back ? "⚡ Greedy (Min-Lateness)" : "⚡ Greedy Heuristic";
+898:     const cLabel = isFallback ? "⚡ Greedy (Min-Makespan)" : "🔬 CP-SAT Optimal";
+899: 
+900:     const fallbackBanner = isFallback ? `
+901:       <div style="background:rgba(245,158,11,0.1); border:1px solid var(--amber); border-radius:var(--radius); padding:12px 18px; margin-bottom:16px; font-size:0.83rem; color:#fde68a;">
+902:         ⚠️ <strong>CP-SAT solver not available</strong> (OR-Tools not installed). Showing two Greedy variants instead:
+903:         <strong>Min-Lateness</strong> vs <strong>Min-Makespan</strong>.
+904:         To enable CP-SAT, run: <code style="background:rgba(0,0,0,0.3); padding:2px 6px; border-radius:4px;">pip install ortools</code>
+905:       </div>` : "";
+906: 
+907:     compArea.innerHTML = `
+908:       ${fallbackBanner}
+909:       <div class="compare-grid">
+910:         <div class="compare-side-card">
+911:           <div class="compare-side-title">${gLabel}</div>
+912:           <table style="margin-top:10px;">
+913:             <tr><td>On-Time %</td><td class="mono">${gk.on_time_pct}%</td></tr>
+914:             <tr><td>Total Lateness</td><td class="mono">${gk.total_lateness_h}h</td></tr>
+915:             <tr><td>Total Profit</td><td class="mono">$${gk.total_profit}</td></tr>
+916:             <tr><td>Makespan</td><td class="mono">${gk.makespan}h</td></tr>
+917:             <tr><td>Missed Tasks</td><td class="mono">${gk.missed_tasks}</td></tr>
+918:           </table>
+919:         </div>
+920: 
+921:         <div class="compare-side-card">
